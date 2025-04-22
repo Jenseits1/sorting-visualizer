@@ -1,4 +1,4 @@
-export class MergeSort {
+export class MergeSort implements SortAlgorithm {
 	private numbers: number[];
 	private temporary: number[];
 	private operations: number[][];

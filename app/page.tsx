@@ -5,60 +5,53 @@ import { ChartComponent } from "./components/chart.component";
 import { useEffect, useState } from "react";
 import { SelectAlgorithmComponent } from "./components/select-algorithm.component";
 import { SelectArraySizeComponent } from "./components/select-array-size.component";
-import {
-	RiArrowDropRightFill,
-	RiArrowRightFill,
-	RiArrowRightLine,
-	RiFlag2Fill,
-	RiFlagFill,
-} from "react-icons/ri";
-import { MergeSort } from "./algorithms/merge-sort";
-
-interface IData {
-	number: number;
-}
+import { RiArrowDropRightFill } from "react-icons/ri";
+import { ArrayState, StateGenerator } from "./algorithms/state-generator";
 
 export default function Home() {
-	const [teamA, setTeamA] = useState<IData[]>([]);
-	const [algorithm, setAlgorithm] = useState();
-	const [arraySize, setArraySize] = useState(["100"]);
+	const [arraySize, setArraySize] = useState();
+	const [leftAlgorithm, setLeftAlgorithm] = useState<string[]>();
 
-	useEffect(() => {
-		let size = parseFloat(arraySize[0]);
-
-		const data = [...Array(size)].map(() => {
-			return { number: Math.floor(Math.random() * (size * 10)) };
-		});
-
-		setTeamA(data);
-	}, []);
+	const [leftArray, setLeftArray] = useState<ArrayState>([]);
+	const [rightArray, setRightArray] = useState<ArrayState>([]);
 
 	const handleStart = async () => {
-		const numbers = teamA?.map(({ number }) => number);
+		if (!leftAlgorithm) {
+			return;
+		}
 
-		const sorted = new MergeSort([...numbers]);
-		const operations = sorted.getOperations();
+		const statesGenerator = new StateGenerator(leftArray, leftAlgorithm);
 
-		for (let [index, number] of operations) {
-			numbers[index] = number;
+		const states = statesGenerator.getStates();
 
-			await new Promise((resolve) => setTimeout(resolve, 10));
-
-			setTeamA(
-				numbers.map((number) => {
-					return { number };
-				})
-			);
+		for (const state of states) {
+			setLeftArray(state);
+			await new Promise((resolve) => setTimeout(resolve, 50));
 		}
 	};
+
+	useEffect(() => {
+		if (!arraySize) {
+			return;
+		}
+
+		const size = parseFloat(arraySize[0]);
+		const arr = [...Array(size)].map(() => {
+			const number = Math.floor(Math.random() * size * 10);
+			return { number };
+		});
+
+		setLeftArray([...arr]);
+		setRightArray([...arr]);
+	}, [arraySize]);
 
 	return (
 		<Container>
 			<NavbarComponent />
 
 			<SelectAlgorithmComponent
-				value={algorithm}
-				onValueChange={(e) => setAlgorithm(e.value)}
+				value={leftAlgorithm}
+				onValueChange={(e) => setLeftAlgorithm(e.value)}
 			/>
 
 			<SelectArraySizeComponent
@@ -77,7 +70,9 @@ export default function Home() {
 					flexDirection: "row",
 				}}
 			>
-				{teamA && <ChartComponent data={teamA} />}
+				{leftArray && <ChartComponent data={leftArray} />}
+
+				{rightArray && <ChartComponent data={rightArray} />}
 			</Box>
 		</Container>
 	);
