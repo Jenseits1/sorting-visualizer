@@ -1,3 +1,0 @@
-interface SortAlgorithm {
-	getOperations(): number[][];
-}

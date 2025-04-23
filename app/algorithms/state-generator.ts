@@ -13,20 +13,19 @@ export class StateGenerator {
 		this.algorithm = algorithm[0];
 	}
 
-	private selectAlgorithm(): SortAlgorithm {
+	private getOperations() {
 		const numbers = this.arrayState.map(({ number }) => number);
 
 		switch (this.algorithm) {
 			case "merge-sort":
-				return new MergeSort(numbers);
+				return new MergeSort(numbers).getOperations();
 			default:
 				throw new Error("unknown sorting algorithm type");
 		}
 	}
 
-	public getStates() {
-		const algorithm = this.selectAlgorithm();
-		const operations = algorithm.getOperations();
+	public generateStates() {
+		const operations = this.getOperations();
 
 		const currState: ArrayState = [...this.arrayState];
 		const states: ArrayState[] = [];
