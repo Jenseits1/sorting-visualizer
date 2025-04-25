@@ -1,25 +1,26 @@
 "use client";
 import {
 	useContext,
-	useEffect,
 	useState,
 	FunctionComponent,
 	createContext,
+	useEffect,
+	useRef,
+	RefObject,
 } from "react";
-import { ArrayState } from "../algorithms/state-generator";
+import { ArrayState, StateGenerator } from "../algorithms/state-generator";
 
 interface SortContextType {
 	arraySize: string[] | undefined;
 	setArraySize: any;
-	leftAlgorithm: string[] | undefined;
-	setLeftAlgorithm: any;
-	rightAlgorithm: string[] | undefined;
-	setRightAlgorithm: any;
-	leftState: ArrayState;
-	setLeftState: any;
-	rightState: ArrayState;
-	setRightState: any;
-	reset: () => void;
+	algorithm: string[] | undefined;
+	setAlgorithm: any;
+	arrayState: ArrayState;
+	setArrayState: any;
+	handleStop: () => void;
+	handleStart: () => void;
+	handleReset: () => void;
+	startedRef: RefObject<boolean>;
 }
 
 interface SortProviderProps {
@@ -32,41 +33,61 @@ export const SortProvider: FunctionComponent<SortProviderProps> = ({
 	children,
 }) => {
 	const [arraySize, setArraySize] = useState<string[]>();
-	const [leftAlgorithm, setLeftAlgorithm] = useState<string[]>();
-	const [rightAlgorithm, setRightAlgorithm] = useState<string[]>();
-	const [leftState, setLeftState] = useState<ArrayState>([]);
-	const [rightState, setRightState] = useState<ArrayState>([]);
+	const [algorithm, setAlgorithm] = useState<string[]>(["merge-sort"]);
+	const [arrayState, setArrayState] = useState<ArrayState>([]);
+	const [started, setStarted] = useState(false);
+	const startedRef = useRef(started);
 
-	const reset = () => {
+	const handleReset = () => {
 		if (!arraySize) return;
 
 		const size = parseFloat(arraySize[0]);
 		const arr = [...Array(size)].map(() => ({
-			number: Math.floor(Math.random() * size),
+			number: Math.floor(Math.random() * size * 5),
 		}));
 
-		setLeftState([...arr]);
-		setRightState([...arr]);
+		setArrayState([...arr]);
 	};
 
+	const handleStart = async () => {
+		setStarted(true);
+
+		const stateGenerator = new StateGenerator(arrayState, algorithm!);
+		const states = stateGenerator.generateStates();
+
+		for (let state of states) {
+			if (!startedRef.current) {
+				break;
+			}
+
+			setArrayState(state);
+			await new Promise((resolve) => setTimeout(resolve, 50));
+		}
+	};
+
+	const handleStop = () => setStarted(false);
+
 	useEffect(() => {
-		reset();
+		handleReset();
 	}, [arraySize]);
+
+	useEffect(() => {
+		startedRef.current = started;
+	}, [started]);
 
 	return (
 		<SortContext.Provider
 			value={{
 				arraySize,
 				setArraySize,
-				leftAlgorithm,
-				setLeftAlgorithm,
-				rightAlgorithm,
-				setRightAlgorithm,
-				leftState,
-				setLeftState,
-				rightState,
-				setRightState,
-				reset,
+				algorithm,
+				setAlgorithm,
+				arrayState,
+				setArrayState,
+				handleReset,
+				handleStart,
+				handleStop,
+				startedRef,
 			}}
 		>
 			{children}

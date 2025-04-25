@@ -1,12 +1,14 @@
+import { Operations } from "./operations";
+
 export class MergeSort {
 	private numbers: number[];
 	private temporary: number[];
-	private operations: number[][];
+	private operations: Operations;
 
-	constructor(numbers: number[]) {
+	constructor(numbers: number[], operations: Operations) {
 		this.numbers = numbers;
 		this.temporary = [];
-		this.operations = [];
+		this.operations = operations;
 
 		this.execute();
 	}
@@ -16,6 +18,8 @@ export class MergeSort {
 		let j = mid + 1;
 
 		while (i <= mid && j <= right) {
+			this.operations.createComparisonOperation(i, j);
+
 			if (this.numbers[i] < this.numbers[j]) {
 				this.temporary.push(this.numbers[i]);
 				i++;
@@ -26,11 +30,13 @@ export class MergeSort {
 		}
 
 		while (i <= mid) {
+			this.operations.createComparisonOperation(i, i);
 			this.temporary.push(this.numbers[i]);
 			i++;
 		}
 
 		while (j <= right) {
+			this.operations.createComparisonOperation(j, j);
 			this.temporary.push(this.numbers[j]);
 			j++;
 		}
@@ -40,13 +46,9 @@ export class MergeSort {
 		while (this.temporary.length > 0) {
 			const number = this.temporary.pop()!;
 			this.numbers[curr] = number;
-			this.saveOperation(curr, number);
+			this.operations.createAccessOperation(curr, number);
 			curr--;
 		}
-	}
-
-	private saveOperation(index: number, number: number) {
-		this.operations.push([index, number]);
 	}
 
 	private sort(left: number, right: number) {

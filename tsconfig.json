@@ -28,6 +28,6 @@
 		"**/*.tsx",
 		".next/types/**/*.ts",
 		"app/providers/sort.provider.tsx"
-	],
+, "app/workers/sort-worker.js"	],
 	"exclude": ["node_modules"]
 }

@@ -23,7 +23,6 @@ export const SelectAlgorithmComponent: FunctionComponent<
 			value={value}
 			onValueChange={onValueChange}
 			collection={algorithms}
-			size="sm"
 			width="150px"
 		>
 			<Select.HiddenSelect />

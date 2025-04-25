@@ -4,9 +4,9 @@ import { Portal, Select, createListCollection } from "@chakra-ui/react";
 
 const sizes = createListCollection({
 	items: [
-		{ label: "25", value: "25" },
-		{ label: "50", value: "50" },
-		{ label: "100", value: "100" },
+		{ label: "Small", value: "10" },
+		{ label: "Medium", value: "20" },
+		{ label: "Large", value: "40" },
 	],
 });
 
@@ -23,7 +23,6 @@ export const SelectArraySizeComponent: FunctionComponent<
 			value={value}
 			onValueChange={onValueChange}
 			collection={sizes}
-			size="sm"
 			width="150px"
 		>
 			<Select.HiddenSelect />

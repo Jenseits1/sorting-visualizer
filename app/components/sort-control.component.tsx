@@ -1,9 +1,10 @@
 import { Box, Button, Container } from "@chakra-ui/react";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useRef, useState } from "react";
 import { SelectAlgorithmComponent } from "./select-algorithm.component";
 import { SelectArraySizeComponent } from "./select-array-size.component";
-import { RiArrowDropRightFill } from "react-icons/ri";
+import { RiPlayFill, RiResetLeftFill, RiStopFill } from "react-icons/ri";
 import { useSort } from "../providers/sort.provider";
+import { StateGenerator } from "../algorithms/state-generator";
 
 interface SortControlComponentProps {}
 
@@ -11,60 +12,22 @@ export const SortControlComponent: FunctionComponent<
 	SortControlComponentProps
 > = () => {
 	const {
-		leftAlgorithm,
-		setLeftAlgorithm,
-		rightAlgorithm,
-		setRightAlgorithm,
+		algorithm,
+		setAlgorithm,
 		arraySize,
 		setArraySize,
-		leftState,
-		setLeftState,
-		rightState,
-		setRightState,
+		handleStart,
+		handleReset,
+		handleStop,
+		startedRef,
 	} = useSort();
 
-	const createWorker = () => {
-		return new Worker(
-			new URL("@/app/workers/sort-worker.ts", import.meta.url),
-			{
-				type: "module",
-			}
-		);
-	};
-	const startDuel = () => {
-		const left = createWorker();
-		const right = createWorker();
-
-		left.postMessage({ algorithm: leftAlgorithm, arrayState: leftState });
-		right.postMessage({
-			algorithm: rightAlgorithm,
-			arrayState: rightState,
-		});
-
-		left.onmessage = (event) => {
-			const currentState = event.data;
-
-			setLeftState(currentState);
-		};
-
-		right.onmessage = (event) => {
-			const currentState = event.data;
-
-			setRightState(currentState);
-		};
-	};
-
 	return (
-		<Container>
-			<Box style={{ display: "flex" }}>
+		<Container paddingY="8">
+			<Box style={{ display: "flex", alignItems: "end" }} spaceX="4">
 				<SelectAlgorithmComponent
-					value={leftAlgorithm}
-					onValueChange={(e) => setLeftAlgorithm(e.value)}
-				/>
-
-				<SelectAlgorithmComponent
-					value={rightAlgorithm}
-					onValueChange={(e) => setRightAlgorithm(e.value)}
+					value={algorithm}
+					onValueChange={(e) => setAlgorithm(e.value)}
 				/>
 
 				<SelectArraySizeComponent
@@ -72,9 +35,27 @@ export const SortControlComponent: FunctionComponent<
 					onValueChange={(e) => setArraySize(e.value)}
 				/>
 
-				<Button variant="solid" onClick={startDuel}>
-					<RiArrowDropRightFill />
+				<Button
+					disabled={startedRef.current}
+					variant="ghost"
+					onClick={handleStart}
+				>
+					<RiPlayFill />
 					Start
+				</Button>
+
+				<Button
+					disabled={startedRef.current}
+					variant="ghost"
+					onClick={handleReset}
+				>
+					<RiResetLeftFill />
+					Reset
+				</Button>
+
+				<Button variant="ghost" onClick={handleStop}>
+					<RiStopFill />
+					Stop
 				</Button>
 			</Box>
 		</Container>
