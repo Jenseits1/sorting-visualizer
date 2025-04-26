@@ -5,9 +5,9 @@ import { useSortStore } from "../store/sort.store";
 
 const sizes = createListCollection({
 	items: [
-		{ label: "Small", value: "10" },
-		{ label: "Medium", value: "20" },
-		{ label: "Large", value: "40" },
+		{ label: "Small", value: "25" },
+		{ label: "Medium", value: "50" },
+		{ label: "Large", value: "100" },
 	],
 });
 
@@ -19,6 +19,7 @@ export const SelectArraySizeComponent: FunctionComponent<
 	const arraySize = useSortStore((state) => state.arraySize);
 	const setArraySize = useSortStore((state) => state.setArraySize);
 	const handleReset = useSortStore((state) => state.handleReset);
+	const disabled = useSortStore((state) => state.started);
 
 	useEffect(() => {
 		handleReset();
@@ -27,6 +28,7 @@ export const SelectArraySizeComponent: FunctionComponent<
 	return (
 		<Select.Root
 			value={arraySize}
+			disabled={disabled}
 			onValueChange={(e) => setArraySize(e.value)}
 			collection={sizes}
 			width="150px"

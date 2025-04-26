@@ -21,7 +21,7 @@ interface SortState {
 
 export const useSortStore = create<SortState>((set, get) => {
 	return {
-		arraySize: ["10"],
+		arraySize: ["25"],
 		setArraySize: (arraySize) => set({ arraySize }),
 
 		algorithm: ["merge-sort"],
@@ -68,6 +68,14 @@ export const useSortStore = create<SortState>((set, get) => {
 
 		handleStop: () => {
 			set({ started: false });
+
+			const arrayState = get().arrayState.map(
+				({ number, highlighted }) => {
+					return { number, highlighted: false };
+				}
+			);
+
+			set({ arrayState });
 		},
 	};
 });

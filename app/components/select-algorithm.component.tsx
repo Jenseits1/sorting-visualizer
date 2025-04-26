@@ -18,9 +18,11 @@ export const SelectAlgorithmComponent: FunctionComponent<
 > = () => {
 	const algorithm = useSortStore((state) => state.algorithm);
 	const setAlgorithm = useSortStore((state) => state.setAlgorithm);
+	const disabled = useSortStore((state) => state.started);
 
 	return (
 		<Select.Root
+			disabled={disabled}
 			value={algorithm}
 			onValueChange={(e) => setAlgorithm(e.value)}
 			collection={algorithms}
