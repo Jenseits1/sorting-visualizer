@@ -1,3 +1,4 @@
+import { InsertionSort } from "./insertion-sort";
 import { MergeSort } from "./merge-sort";
 import { Operations } from "./operations";
 import { QuickSort } from "./quick-sort";
@@ -26,6 +27,8 @@ export class StateGenerator {
 				return new MergeSort(numbers, this.operations);
 			case "quick-sort":
 				return new QuickSort(numbers, this.operations);
+			case "insertion-sort":
+				return new InsertionSort(numbers, this.operations);
 			default:
 				return;
 		}

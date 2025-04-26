@@ -59,7 +59,7 @@ export const useSortStore = create<SortState>((set, get) => {
 
 				if (started) {
 					set({ arrayState });
-					await new Promise((res) => setTimeout(res, 50));
+					await new Promise((res) => setTimeout(res, 5));
 				}
 			}
 

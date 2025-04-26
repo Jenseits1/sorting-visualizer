@@ -31,7 +31,7 @@ export const SelectArraySizeComponent: FunctionComponent<
 			disabled={disabled}
 			onValueChange={(e) => setArraySize(e.value)}
 			collection={sizes}
-			width="150px"
+			width="120px"
 		>
 			<Select.HiddenSelect />
 			<Select.Label>Array Size</Select.Label>

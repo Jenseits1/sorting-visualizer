@@ -4,6 +4,8 @@ import {
 	Container,
 	IconButton,
 	Separator,
+	Show,
+	Text,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { SelectAlgorithmComponent } from "./select-algorithm.component";
@@ -28,61 +30,41 @@ export const SortControlComponent: FunctionComponent<
 	const disabled = useSortStore((state) => state.started);
 
 	return (
-		<Container paddingY="8">
-			<Box
-				display="flex"
-				justifyContent="space-between"
-				alignItems="end"
-				marginBottom="4"
-			>
-				<Box display="flex" alignItems="end" spaceX="4">
-					<SelectAlgorithmComponent />
+		<Container>
+			<Box display="flex" alignItems="end" spaceX="2" marginBottom="4">
+				<SelectAlgorithmComponent />
 
-					<SelectArraySizeComponent />
+				<SelectArraySizeComponent />
 
-					<Button
-						disabled={disabled}
-						variant="ghost"
-						onClick={handleReset}
-					>
-						<RiResetLeftFill />
-						New Array
-					</Button>
+				<Button
+					disabled={disabled}
+					variant="ghost"
+					onClick={handleReset}
+				>
+					<RiResetLeftFill />
+					<Text display={{ base: "none", md: "inline" }}>
+						New array
+					</Text>
+				</Button>
 
-					<Button
-						disabled={disabled}
-						variant="ghost"
-						onClick={handleStart}
-					>
-						<RiPlayFill />
-						Start
-					</Button>
+				<Button
+					disabled={disabled}
+					variant="ghost"
+					onClick={handleStart}
+				>
+					<RiPlayFill />
 
-					<Button
-						disabled={!disabled}
-						variant="ghost"
-						onClick={handleStop}
-					>
-						<RiStopFill />
-						Stop
-					</Button>
-				</Box>
+					<Text display={{ base: "none", md: "inline" }}>Start</Text>
+				</Button>
 
-				<Box>
-					<IconButton
-						variant="ghost"
-						onClick={() =>
-							window.open(
-								"https://github.com/washingtonfbueno/resume-json",
-								"_blank"
-							)
-						}
-					>
-						<RiGithubLine />
-					</IconButton>
-
-					<ColorModeButton />
-				</Box>
+				<Button
+					disabled={!disabled}
+					variant="ghost"
+					onClick={handleStop}
+				>
+					<RiStopFill />
+					<Text display={{ base: "none", md: "inline" }}>Stop</Text>
+				</Button>
 			</Box>
 
 			<Separator />

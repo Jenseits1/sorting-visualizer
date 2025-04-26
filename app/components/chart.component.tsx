@@ -19,20 +19,14 @@ export const ChartComponent: FunctionComponent<ChartComponentProps> = () => {
 		<Container>
 			<Chart.Root maxH="md" chart={chart}>
 				<BarChart barCategoryGap="1" data={chart.data}>
-					<XAxis
-						tickLine={false}
-						dataKey={chart.key("number")}
-						stroke={chart.color("border")}
-					/>
-
 					<Bar isAnimationActive={true} dataKey={chart.key("number")}>
 						{chart.data.map(({ highlighted }, index) => (
 							<Cell
 								key={index}
 								fill={chart.color(
 									highlighted
-										? "pink.focusRing"
-										: "pink.emphasized"
+										? "yellow.focusRing"
+										: "red.emphasized"
 								)}
 							/>
 						))}

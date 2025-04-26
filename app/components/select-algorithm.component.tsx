@@ -7,7 +7,7 @@ const algorithms = createListCollection({
 	items: [
 		{ label: "Merge Sort", value: "merge-sort" },
 		{ label: "Quick Sort", value: "quick-sort" },
-		{ label: "Bubble Sort", value: "bubble-sort" },
+		{ label: "Insertion Sort", value: "insertion-sort" },
 	],
 });
 
@@ -26,10 +26,10 @@ export const SelectAlgorithmComponent: FunctionComponent<
 			value={algorithm}
 			onValueChange={(e) => setAlgorithm(e.value)}
 			collection={algorithms}
-			width="150px"
+			width="120px"
 		>
 			<Select.HiddenSelect />
-			<Select.Label>Algorithm</Select.Label>
+			<Select.Label>Technique</Select.Label>
 			<Select.Control>
 				<Select.Trigger>
 					<Select.ValueText placeholder="Select algorithm" />
