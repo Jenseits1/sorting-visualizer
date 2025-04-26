@@ -1,6 +1,7 @@
 "use client";
 import { FunctionComponent } from "react";
 import { Portal, Select, createListCollection } from "@chakra-ui/react";
+import { useSortStore } from "../store/sort.store";
 
 const algorithms = createListCollection({
 	items: [
@@ -10,18 +11,18 @@ const algorithms = createListCollection({
 	],
 });
 
-interface SelectAlgorithmComponentProps {
-	value?: string[];
-	onValueChange: (e: any) => void;
-}
+interface SelectAlgorithmComponentProps {}
 
 export const SelectAlgorithmComponent: FunctionComponent<
 	SelectAlgorithmComponentProps
-> = ({ onValueChange, value }) => {
+> = () => {
+	const algorithm = useSortStore((state) => state.algorithm);
+	const setAlgorithm = useSortStore((state) => state.setAlgorithm);
+
 	return (
 		<Select.Root
-			value={value}
-			onValueChange={onValueChange}
+			value={algorithm}
+			onValueChange={(e) => setAlgorithm(e.value)}
 			collection={algorithms}
 			width="150px"
 		>

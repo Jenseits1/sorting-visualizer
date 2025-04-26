@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Provider } from "@/components/ui/provider";
-import { SortProvider } from "./providers/sort.provider";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -15,9 +14,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body>
-				<SortProvider>
-					<Provider>{children}</Provider>
-				</SortProvider>
+				<Provider>{children}</Provider>
 			</body>
 		</html>
 	);

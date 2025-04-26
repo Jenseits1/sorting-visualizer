@@ -2,17 +2,17 @@
 import { FunctionComponent } from "react";
 
 import { Chart, useChart } from "@chakra-ui/charts";
-import { Bar, BarChart, CartesianGrid, Cell, Tooltip, XAxis } from "recharts";
-import { Box, Container } from "@chakra-ui/react";
-import { useSort } from "../providers/sort.provider";
+import { Bar, BarChart, Cell, XAxis } from "recharts";
+import { Container } from "@chakra-ui/react";
+import { useSortStore } from "../store/sort.store";
 
 interface ChartComponentProps {}
 
 export const ChartComponent: FunctionComponent<ChartComponentProps> = () => {
-	const { arrayState } = useSort();
+	const data = useSortStore((state) => state.arrayState);
 
 	const chart = useChart({
-		data: arrayState,
+		data,
 	});
 
 	return (

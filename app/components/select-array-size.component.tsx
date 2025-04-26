@@ -1,6 +1,7 @@
 "use client";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { Portal, Select, createListCollection } from "@chakra-ui/react";
+import { useSortStore } from "../store/sort.store";
 
 const sizes = createListCollection({
 	items: [
@@ -10,18 +11,23 @@ const sizes = createListCollection({
 	],
 });
 
-interface SelectArraySizeComponentProps {
-	value?: string[];
-	onValueChange: (e: any) => void;
-}
+interface SelectArraySizeComponentProps {}
 
 export const SelectArraySizeComponent: FunctionComponent<
 	SelectArraySizeComponentProps
-> = ({ value, onValueChange }) => {
+> = () => {
+	const arraySize = useSortStore((state) => state.arraySize);
+	const setArraySize = useSortStore((state) => state.setArraySize);
+	const handleReset = useSortStore((state) => state.handleReset);
+
+	useEffect(() => {
+		handleReset();
+	}, [arraySize]);
+
 	return (
 		<Select.Root
-			value={value}
-			onValueChange={onValueChange}
+			value={arraySize}
+			onValueChange={(e) => setArraySize(e.value)}
 			collection={sizes}
 			width="150px"
 		>
