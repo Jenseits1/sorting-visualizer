@@ -5,7 +5,7 @@ import { SortControlComponent } from "./components/sort-control.component";
 import { ChartComponent } from "./components/chart.component";
 
 export default function Home() {
-	console.log();
+	console.log("");
 	return (
 		<Container>
 			<SortControlComponent />
