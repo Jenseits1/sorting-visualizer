@@ -1,6 +1,5 @@
-"use client";
 import { create } from "zustand";
-import { ArrayState, StateGenerator } from "../algorithms/state-generator";
+import { SortableNumber, StateGenerator } from "../algorithms/state-generator";
 
 interface SortState {
 	arraySize?: string[];
@@ -9,8 +8,11 @@ interface SortState {
 	algorithm?: string[];
 	setAlgorithm: (algorithm: string[]) => void;
 
-	arrayState: ArrayState;
-	setArrayState: (arrayState: ArrayState) => void;
+	numbers: SortableNumber[];
+	setNumbers: (numbers: SortableNumber[]) => void;
+
+	speed: number[];
+	setSpeed: (speed: number[]) => void;
 
 	started: boolean;
 
@@ -21,14 +23,17 @@ interface SortState {
 
 export const useSortStore = create<SortState>((set, get) => {
 	return {
-		arraySize: ["25"],
+		arraySize: ["50"],
 		setArraySize: (arraySize) => set({ arraySize }),
 
 		algorithm: ["merge-sort"],
 		setAlgorithm: (algorithm) => set({ algorithm }),
 
-		arrayState: [],
-		setArrayState: (arrayState) => set({ arrayState }),
+		speed: [100],
+		setSpeed: (speed) => set({ speed }),
+
+		numbers: [],
+		setNumbers: (numbers) => set({ numbers }),
 
 		started: false,
 
@@ -38,44 +43,51 @@ export const useSortStore = create<SortState>((set, get) => {
 
 			const size = parseFloat(sizeStr);
 
-			const arr = Array.from({ length: size }, () => ({
-				number: Math.floor(Math.random() * size * 5),
-			}));
+			const numbers: SortableNumber[] = Array.from(
+				{ length: size },
+				() => ({
+					number: Math.ceil(Math.random() * size * 2),
+					color: "red",
+				})
+			);
 
-			set({ arrayState: arr });
+			set({ numbers });
 		},
 
 		handleStart: async () => {
 			set({ started: true });
 
 			const generator = new StateGenerator(
-				get().arrayState,
+				get().numbers,
 				get().algorithm!
 			);
+
 			const states = generator.generateStates();
 
-			for (const arrayState of states) {
+			for (const { type, numbers } of states) {
 				const started = get().started;
 
 				if (started) {
-					set({ arrayState });
-					await new Promise((res) => setTimeout(res, 5));
+					set({ numbers });
+					await new Promise((resolve) =>
+						setTimeout(resolve, 100 - get().speed[0] + 1)
+					);
 				}
 			}
 
-			set({ started: false });
+			get().handleStop();
 		},
 
 		handleStop: () => {
 			set({ started: false });
 
-			const arrayState = get().arrayState.map(
-				({ number, highlighted }) => {
-					return { number, highlighted: false };
+			const numbers: SortableNumber[] = get().numbers.map(
+				({ number }) => {
+					return { number, color: "red" };
 				}
-			);
+			)!;
 
-			set({ arrayState });
+			set({ numbers });
 		},
 	};
 });

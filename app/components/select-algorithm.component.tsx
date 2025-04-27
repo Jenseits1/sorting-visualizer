@@ -1,4 +1,3 @@
-"use client";
 import { FunctionComponent } from "react";
 import { Portal, Select, createListCollection } from "@chakra-ui/react";
 import { useSortStore } from "../store/sort.store";

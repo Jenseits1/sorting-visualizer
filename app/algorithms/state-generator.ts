@@ -3,24 +3,29 @@ import { MergeSort } from "./merge-sort";
 import { Operations } from "./operations";
 import { QuickSort } from "./quick-sort";
 
-export type ArrayState = {
+export type SortArrayState = {
+	type: "comparison" | "access" | null;
+	numbers: SortableNumber[];
+};
+
+export type SortableNumber = {
 	number: number;
-	highlighted?: boolean;
-}[];
+	color: "red" | "white";
+};
 
 export class StateGenerator {
-	private arrayState: ArrayState;
+	private numbers: SortableNumber[];
 	private algorithm: string;
 	private operations: Operations;
 
-	constructor(arrayState: ArrayState, algorithm: string[]) {
-		this.arrayState = arrayState;
+	constructor(numbers: SortableNumber[], algorithm: string[]) {
+		this.numbers = numbers;
 		this.algorithm = algorithm[0];
 		this.operations = new Operations();
 	}
 
 	private processOperations() {
-		const numbers = this.arrayState.map(({ number }) => number);
+		const numbers = this.numbers.map(({ number }) => number);
 
 		switch (this.algorithm) {
 			case "merge-sort":
@@ -37,24 +42,26 @@ export class StateGenerator {
 	public generateStates() {
 		this.processOperations();
 
-		const currState: ArrayState = [...this.arrayState];
-		const states: ArrayState[] = [];
+		const numbers = [...this.numbers];
+		const states: SortArrayState[] = [];
 
 		for (let operation of this.operations.getOperations()) {
 			if (operation.type == "access") {
-				currState[operation.index].number = operation.number;
+				numbers[operation.index].number = operation.number;
 			}
 
-			const newState = currState.map(({ number, highlighted }) => {
-				return { number, highlighted };
-			});
+			const newNumbers: SortableNumber[] = numbers.map(
+				({ number, color }) => {
+					return { number, color };
+				}
+			);
 
 			if (operation.type == "comparison") {
-				newState[operation.leftIndex].highlighted = true;
-				newState[operation.rightIndex].highlighted = true;
+				newNumbers[operation.leftIndex].color = "white";
+				newNumbers[operation.rightIndex].color = "white";
 			}
 
-			states.push(newState);
+			states.push({ type: operation.type, numbers: newNumbers });
 		}
 
 		return states;

@@ -1,5 +1,4 @@
-import { ColorModeButton } from "@/components/ui/color-mode";
-import { Box, Container, IconButton } from "@chakra-ui/react";
+import { Container, IconButton } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { RiGithubLine } from "react-icons/ri";
 import { LogoComponent } from "./logo.component";

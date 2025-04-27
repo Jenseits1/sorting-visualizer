@@ -2,8 +2,9 @@
 import { Container } from "@chakra-ui/react";
 
 import { SortControlComponent } from "./components/sort-control.component";
-import { ChartComponent } from "./components/chart.component";
+
 import { NavbarComponent } from "./components/navbar.component";
+import { BarsCanvasComponent } from "./components/bars-canvas.component";
 
 export default function Home() {
 	return (
@@ -12,7 +13,7 @@ export default function Home() {
 
 			<SortControlComponent />
 
-			<ChartComponent />
+			<BarsCanvasComponent />
 		</Container>
 	);
 }

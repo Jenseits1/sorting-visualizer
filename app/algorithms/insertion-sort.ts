@@ -12,8 +12,6 @@ export class InsertionSort {
 	}
 
 	private swapElements(i: number, j: number) {
-		this.operations.createComparisonOperation(i, j);
-
 		this.operations.createAccessOperation(i, this.numbers[j]);
 		this.operations.createAccessOperation(j, this.numbers[i]);
 		[this.numbers[i], this.numbers[j]] = [this.numbers[j], this.numbers[i]];
@@ -23,7 +21,13 @@ export class InsertionSort {
 		for (let i = 0; i < this.numbers.length; i++) {
 			let j = i;
 
-			while (j > 0 && this.numbers[j] < this.numbers[j - 1]) {
+			while (j > 0) {
+				this.operations.createComparisonOperation(j, j - 1);
+
+				if (this.numbers[j] > this.numbers[j - 1]) {
+					break;
+				}
+
 				this.swapElements(j, j - 1);
 				j--;
 			}

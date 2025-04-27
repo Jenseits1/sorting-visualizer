@@ -1,13 +1,12 @@
-"use client";
 import { FunctionComponent, useEffect } from "react";
 import { Portal, Select, createListCollection } from "@chakra-ui/react";
 import { useSortStore } from "../store/sort.store";
 
 const sizes = createListCollection({
 	items: [
-		{ label: "Small", value: "25" },
-		{ label: "Medium", value: "50" },
-		{ label: "Large", value: "100" },
+		{ label: "Small", value: "50" },
+		{ label: "Medium", value: "150" },
+		{ label: "Large", value: "300" },
 	],
 });
 

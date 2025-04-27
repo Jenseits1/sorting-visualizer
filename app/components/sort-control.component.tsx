@@ -1,23 +1,10 @@
-import {
-	Box,
-	Button,
-	Container,
-	IconButton,
-	Separator,
-	Show,
-	Text,
-} from "@chakra-ui/react";
+import { Box, Button, Container, Separator, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { SelectAlgorithmComponent } from "./select-algorithm.component";
 import { SelectArraySizeComponent } from "./select-array-size.component";
-import {
-	RiGithubLine,
-	RiPlayFill,
-	RiResetLeftFill,
-	RiStopFill,
-} from "react-icons/ri";
+import { RiPlayFill, RiResetLeftFill, RiStopFill } from "react-icons/ri";
 import { useSortStore } from "../store/sort.store";
-import { ColorModeButton } from "@/components/ui/color-mode";
+import { SpeedComponent } from "./speed.component";
 
 interface SortControlComponentProps {}
 
@@ -65,6 +52,8 @@ export const SortControlComponent: FunctionComponent<
 					<RiStopFill />
 					<Text display={{ base: "none", md: "inline" }}>Stop</Text>
 				</Button>
+
+				<SpeedComponent />
 			</Box>
 
 			<Separator />
