@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Code, Slider } from "@chakra-ui/react";
+import { Slider } from "@chakra-ui/react";
 import { useSortStore } from "../store/sort.store";
 
 interface SpeedComponentProps {}
@@ -11,6 +11,8 @@ export const SpeedComponent: FunctionComponent<SpeedComponentProps> = () => {
 	return (
 		<Slider.Root
 			w="80px"
+			min={1}
+			max={100}
 			value={speed}
 			onValueChange={(e) => setSpeed(e.value)}
 		>

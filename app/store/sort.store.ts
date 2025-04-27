@@ -2,8 +2,11 @@ import { create } from "zustand";
 import { SortableNumber, StateGenerator } from "../algorithms/state-generator";
 
 interface SortState {
-	arraySize?: string[];
-	setArraySize: (arraySize: string[]) => void;
+	speed: number[];
+	setSpeed: (speed: number[]) => void;
+
+	size?: number[];
+	setSize: (size: number[]) => void;
 
 	algorithm?: string[];
 	setAlgorithm: (algorithm: string[]) => void;
@@ -11,8 +14,8 @@ interface SortState {
 	numbers: SortableNumber[];
 	setNumbers: (numbers: SortableNumber[]) => void;
 
-	speed: number[];
-	setSpeed: (speed: number[]) => void;
+	progress: number;
+	maxProgress: number;
 
 	started: boolean;
 
@@ -23,31 +26,31 @@ interface SortState {
 
 export const useSortStore = create<SortState>((set, get) => {
 	return {
-		arraySize: ["50"],
-		setArraySize: (arraySize) => set({ arraySize }),
+		size: [10],
+		setSize: (size) => set({ size }),
 
 		algorithm: ["merge-sort"],
 		setAlgorithm: (algorithm) => set({ algorithm }),
 
-		speed: [100],
+		speed: [50],
 		setSpeed: (speed) => set({ speed }),
 
 		numbers: [],
 		setNumbers: (numbers) => set({ numbers }),
 
+		progress: 0,
+		maxProgress: 0,
+
 		started: false,
 
 		handleReset: () => {
-			const sizeStr = get().arraySize?.[0];
-			if (!sizeStr) return;
-
-			const size = parseFloat(sizeStr);
+			const size = get().size?.[0]!;
 
 			const numbers: SortableNumber[] = Array.from(
 				{ length: size },
 				() => ({
-					number: Math.ceil(Math.random() * size * 2),
-					color: "red",
+					number: Math.ceil(Math.random() * 700),
+					color: "#B22222",
 				})
 			);
 
@@ -64,14 +67,21 @@ export const useSortStore = create<SortState>((set, get) => {
 
 			const states = generator.generateStates();
 
+			set({ progress: 0 });
+			set({ maxProgress: states.length });
+
 			for (const { type, numbers } of states) {
 				const started = get().started;
 
 				if (started) {
 					set({ numbers });
-					await new Promise((resolve) =>
-						setTimeout(resolve, 100 - get().speed[0] + 1)
-					);
+
+					const progress = get().progress + 1;
+					set({ progress });
+
+					const ms = 500 / get().speed[0];
+
+					await new Promise((resolve) => setTimeout(resolve, ms));
 				}
 			}
 
@@ -83,7 +93,7 @@ export const useSortStore = create<SortState>((set, get) => {
 
 			const numbers: SortableNumber[] = get().numbers.map(
 				({ number }) => {
-					return { number, color: "red" };
+					return { number, color: "#B22222" };
 				}
 			)!;
 

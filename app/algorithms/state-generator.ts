@@ -10,7 +10,7 @@ export type SortArrayState = {
 
 export type SortableNumber = {
 	number: number;
-	color: "red" | "white";
+	color: string;
 };
 
 export class StateGenerator {

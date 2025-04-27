@@ -1,4 +1,4 @@
-import { Box, Container } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { FunctionComponent, useEffect, useRef } from "react";
 import { useSortStore } from "../store/sort.store";
 
@@ -55,15 +55,8 @@ export const BarsCanvasComponent: FunctionComponent<
 	}, [numbers]);
 
 	return (
-		<Container>
-			<Box
-				height="3xl"
-				display="flex"
-				justifyContent="center"
-				ref={boxRef}
-			>
-				<canvas ref={canvasRef} />
-			</Box>
-		</Container>
+		<Box height="3xl" display="flex" justifyContent="center" ref={boxRef}>
+			<canvas ref={canvasRef} />
+		</Box>
 	);
 };

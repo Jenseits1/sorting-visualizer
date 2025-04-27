@@ -1,10 +1,10 @@
-import { Box, Button, Container, Separator, Text } from "@chakra-ui/react";
+import { Box, Button, Separator, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { SelectAlgorithmComponent } from "./select-algorithm.component";
-import { SelectArraySizeComponent } from "./select-array-size.component";
 import { RiPlayFill, RiResetLeftFill, RiStopFill } from "react-icons/ri";
 import { useSortStore } from "../store/sort.store";
 import { SpeedComponent } from "./speed.component";
+import { SizeComponent } from "./size.component";
 
 interface SortControlComponentProps {}
 
@@ -17,15 +17,13 @@ export const SortControlComponent: FunctionComponent<
 	const disabled = useSortStore((state) => state.started);
 
 	return (
-		<Container>
-			<Box display="flex" alignItems="end" spaceX="2" marginBottom="4">
+		<>
+			<Box display="flex" alignItems="end" spaceX="4" marginBottom="4">
 				<SelectAlgorithmComponent />
-
-				<SelectArraySizeComponent />
 
 				<Button
 					disabled={disabled}
-					variant="ghost"
+					variant="subtle"
 					onClick={handleReset}
 				>
 					<RiResetLeftFill />
@@ -36,7 +34,7 @@ export const SortControlComponent: FunctionComponent<
 
 				<Button
 					disabled={disabled}
-					variant="ghost"
+					variant="subtle"
 					onClick={handleStart}
 				>
 					<RiPlayFill />
@@ -46,17 +44,19 @@ export const SortControlComponent: FunctionComponent<
 
 				<Button
 					disabled={!disabled}
-					variant="ghost"
+					variant="subtle"
 					onClick={handleStop}
 				>
 					<RiStopFill />
 					<Text display={{ base: "none", md: "inline" }}>Stop</Text>
 				</Button>
 
+				<SizeComponent />
+
 				<SpeedComponent />
 			</Box>
 
 			<Separator />
-		</Container>
+		</>
 	);
 };
