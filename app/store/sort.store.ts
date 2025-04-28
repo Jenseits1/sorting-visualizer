@@ -79,7 +79,7 @@ export const useSortStore = create<SortState>((set, get) => {
 					const progress = get().progress + 1;
 					set({ progress });
 
-					const ms = 500 / get().speed[0];
+					const ms = 300 / get().speed[0];
 
 					await new Promise((resolve) => setTimeout(resolve, ms));
 				}

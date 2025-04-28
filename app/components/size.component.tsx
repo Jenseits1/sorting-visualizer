@@ -16,10 +16,10 @@ export const SizeComponent: FunctionComponent<SizeComponentProps> = () => {
 
 	return (
 		<Slider.Root
-			w="80px"
 			value={size}
+			w="80px"
 			min={10}
-			max={300}
+			max={400}
 			disabled={disabled}
 			onValueChange={(e) => setSize(e.value)}
 		>
