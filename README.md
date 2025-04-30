@@ -13,7 +13,7 @@ Sort No Jutsu is an interactive sorting algorithm visualizer built to help you v
 - **Start/Stop Controls ⏸️:**
     - Start and stop the visualization at any time to examine specific steps or slow down the process for a deeper understanding.
 - **Randomized Array Generation 🔀:**
-    - Generate a new randomized array with the click of a button to see the algorithm work on different datasets.
+    - Generate a new randomized array to see the algorithm work on different datasets.
 - **Optimized Canvas Animation 🖼️:**
     - The visualization is highly optimized, delivering smooth animations and ensuring up to 200+ frames per second.
 - **Progress Bar 📊:**
@@ -25,7 +25,7 @@ Sort No Jutsu is an interactive sorting algorithm visualizer built to help you v
 - **TypeScript 📜:** Static type checker for enhanced code quality and maintainability.
 - **Chakra UI 🎨:** Component library for building accessible and responsive user interfaces.
 - **Zustand 🧠:** A state management library used to manage the sorting algorithm’s state and interactions.
-- **HTML5 Canvas 🖼️:** Provides the base for rendering sorting visualizations smoothly and efficiently.
+- **HTML5 Canvas 🖼️:** Provides the base for rendering the animations smoothly and efficiently.
 
 ## 🚀 Getting Started 🚀
 
@@ -99,6 +99,4 @@ We encourage you to create issues for bugs, feature requests, or general questio
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
----
 
-🔗 Check out the [Live Demo](http://sortnojutsu.example.com) (Replace with your live URL) to see the magic in action! ✨
