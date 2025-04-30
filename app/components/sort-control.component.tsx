@@ -3,8 +3,8 @@ import { FunctionComponent } from "react";
 import { SelectAlgorithmComponent } from "./select-algorithm.component";
 import { RiPlayFill, RiResetLeftFill, RiStopFill } from "react-icons/ri";
 import { useSortStore } from "../store/sort.store";
-import { SpeedComponent } from "./speed.component";
 import { SizeComponent } from "./size.component";
+import { DelayComponent } from "./delay.component";
 
 interface SortControlComponentProps {}
 
@@ -51,7 +51,7 @@ export const SortControlComponent: FunctionComponent<
 
 				<SizeComponent />
 
-				<SpeedComponent />
+				<DelayComponent />
 			</Box>
 
 			<Separator />

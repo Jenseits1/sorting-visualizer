@@ -2,8 +2,8 @@ import { create } from "zustand";
 import { SortableNumber, StateGenerator } from "../algorithms/state-generator";
 
 interface SortState {
-	speed: number[];
-	setSpeed: (speed: number[]) => void;
+	delay: number[];
+	setDelay: (speed: number[]) => void;
 
 	size: number[];
 	setSize: (size: number[]) => void;
@@ -32,8 +32,8 @@ export const useSortStore = create<SortState>((set, get) => {
 		algorithm: ["merge-sort"],
 		setAlgorithm: (algorithm) => set({ algorithm }),
 
-		speed: [50],
-		setSpeed: (speed) => set({ speed }),
+		delay: [50],
+		setDelay: (delay) => set({ delay }),
 
 		numbers: [],
 		setNumbers: (numbers) => set({ numbers }),
@@ -79,9 +79,9 @@ export const useSortStore = create<SortState>((set, get) => {
 					const progress = get().progress + 1;
 					set({ progress });
 
-					const ms = 500 / get().speed[0];
+					const delay = get().delay[0];
 
-					await new Promise((resolve) => setTimeout(resolve, ms));
+					await new Promise((resolve) => setTimeout(resolve, delay));
 				}
 			}
 

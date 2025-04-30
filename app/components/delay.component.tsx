@@ -2,21 +2,21 @@ import { FunctionComponent } from "react";
 import { Slider } from "@chakra-ui/react";
 import { useSortStore } from "../store/sort.store";
 
-interface SpeedComponentProps {}
+interface DelayComponentProps {}
 
-export const SpeedComponent: FunctionComponent<SpeedComponentProps> = () => {
-	const speed = useSortStore((state) => state.speed);
-	const setSpeed = useSortStore((state) => state.setSpeed);
+export const DelayComponent: FunctionComponent<DelayComponentProps> = () => {
+	const delay = useSortStore((state) => state.delay);
+	const setDelay = useSortStore((state) => state.setDelay);
 
 	return (
 		<Slider.Root
 			w="80px"
 			min={1}
-			max={200}
-			value={speed}
-			onValueChange={(e) => setSpeed(e.value)}
+			max={500}
+			value={delay}
+			onValueChange={(e) => setDelay(e.value)}
 		>
-			<Slider.Label>Speed</Slider.Label>
+			<Slider.Label>Delay</Slider.Label>
 			<Slider.Control>
 				<Slider.Track>
 					<Slider.Range />
