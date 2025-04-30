@@ -12,7 +12,7 @@ export const SizeComponent: FunctionComponent<SizeComponentProps> = () => {
 
 	useEffect(() => {
 		handleReset();
-	}, [size]);
+	}, [size, handleReset]);
 
 	return (
 		<Slider.Root

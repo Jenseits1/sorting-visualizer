@@ -56,7 +56,7 @@ export class StateGenerator {
 		const numbers = [...this.numbers];
 		const states: SortArrayState[] = [];
 
-		for (let operation of operations) {
+		for (const operation of operations) {
 			if (operation.type == "access") {
 				numbers[operation.index].number = operation.number;
 			}

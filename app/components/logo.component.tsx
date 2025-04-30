@@ -7,7 +7,7 @@ export const LogoComponent: FunctionComponent<LogoComponentProps> = () => {
 	return (
 		<Box display="flex" alignItems="center">
 			<Icon size="xl" color="red.solid">
-				<Image src="./mangekyou.svg" />
+				<Image src="./mangekyou.svg" alt="mangekyou" />
 			</Icon>
 
 			<Text

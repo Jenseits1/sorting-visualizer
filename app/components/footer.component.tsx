@@ -1,4 +1,4 @@
-import { Box, Container, Icon, Separator, Text } from "@chakra-ui/react";
+import { Box, Separator, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 
 interface FooterComponentProps {}

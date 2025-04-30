@@ -40,7 +40,7 @@ export const BarsCanvasComponent: FunctionComponent<
 		let x = 0;
 		let y = 0;
 
-		for (let { number, color } of numbers) {
+		for (const { number, color } of numbers) {
 			const height = number;
 
 			ctx.fillStyle = color;
@@ -52,7 +52,7 @@ export const BarsCanvasComponent: FunctionComponent<
 
 	useEffect(() => {
 		renderCanvas();
-	}, [numbers]);
+	}, [numbers, renderCanvas]);
 
 	return (
 		<Box height="3xl" display="flex" justifyContent="center" ref={boxRef}>

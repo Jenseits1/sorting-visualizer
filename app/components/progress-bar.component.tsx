@@ -42,7 +42,7 @@ export const ProgressBarComponent: FunctionComponent<
 
 	useEffect(() => {
 		renderCanvas();
-	}, [progress]);
+	}, [progress, renderCanvas]);
 
 	return (
 		<Box height="1" ref={boxRef}>

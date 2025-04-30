@@ -5,7 +5,7 @@ interface SortState {
 	speed: number[];
 	setSpeed: (speed: number[]) => void;
 
-	size?: number[];
+	size: number[];
 	setSize: (size: number[]) => void;
 
 	algorithm?: string[];
@@ -44,7 +44,7 @@ export const useSortStore = create<SortState>((set, get) => {
 		started: false,
 
 		handleReset: () => {
-			const size = get().size?.[0]!;
+			const size = get().size[0];
 
 			const numbers: SortableNumber[] = Array.from(
 				{ length: size },
