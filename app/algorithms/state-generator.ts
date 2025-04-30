@@ -1,7 +1,9 @@
+import { BubbleSort } from "./bubble-sort";
 import { InsertionSort } from "./insertion-sort";
 import { MergeSort } from "./merge-sort";
 import { Operations } from "./operations";
 import { QuickSort } from "./quick-sort";
+import { SelectionSort } from "./selection-sort";
 
 export type SortArrayState = {
 	type: "comparison" | "access" | null;
@@ -32,6 +34,10 @@ export class StateGenerator {
 				return QuickSort;
 			case "insertion-sort":
 				return InsertionSort;
+			case "selection-sort":
+				return SelectionSort;
+			case "bubble-sort":
+				return BubbleSort;
 			default:
 				return;
 		}

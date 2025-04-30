@@ -7,6 +7,8 @@ const algorithms = createListCollection({
 		{ label: "Merge Sort", value: "merge-sort" },
 		{ label: "Quick Sort", value: "quick-sort" },
 		{ label: "Insertion Sort", value: "insertion-sort" },
+		{ label: "Selection Sort", value: "selection-sort" },
+		{ label: "Bubble Sort", value: "bubble-sort" },
 	],
 });
 
