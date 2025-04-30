@@ -12,7 +12,7 @@ export const SpeedComponent: FunctionComponent<SpeedComponentProps> = () => {
 		<Slider.Root
 			w="80px"
 			min={1}
-			max={100}
+			max={200}
 			value={speed}
 			onValueChange={(e) => setSpeed(e.value)}
 		>
