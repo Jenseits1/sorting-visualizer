@@ -9,8 +9,6 @@ export class MergeSort {
 		this.numbers = numbers;
 		this.temporary = [];
 		this.operations = operations;
-
-		this.execute();
 	}
 
 	private merge(left: number, mid: number, right: number) {
@@ -56,7 +54,7 @@ export class MergeSort {
 			return;
 		}
 
-		let mid = Math.floor((left + right) / 2);
+		const mid = Math.floor((left + right) / 2);
 
 		this.sort(left, mid);
 		this.sort(mid + 1, right);
@@ -64,11 +62,7 @@ export class MergeSort {
 		this.merge(left, mid, right);
 	}
 
-	private execute() {
+	execute() {
 		this.sort(0, this.numbers.length - 1);
-	}
-
-	getOperations() {
-		return this.operations;
 	}
 }

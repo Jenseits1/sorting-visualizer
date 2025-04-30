@@ -7,11 +7,12 @@ export class QuickSort {
 	constructor(numbers: number[], operations: Operations) {
 		this.numbers = numbers;
 		this.operations = operations;
-
-		this.execute();
 	}
 
 	private getPivot(left: number, right: number) {
+		const mid = Math.floor((left + right) / 2);
+		this.swapElements(mid, right);
+
 		return right;
 	}
 
@@ -52,7 +53,7 @@ export class QuickSort {
 		this.sort(mid + 1, right);
 	}
 
-	private execute() {
+	execute() {
 		this.sort(0, this.numbers.length - 1);
 	}
 }

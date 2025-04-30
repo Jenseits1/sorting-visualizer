@@ -7,8 +7,6 @@ export class InsertionSort {
 	constructor(numbers: number[], operations: Operations) {
 		this.numbers = numbers;
 		this.operations = operations;
-
-		this.execute();
 	}
 
 	private swapElements(i: number, j: number) {
@@ -34,11 +32,7 @@ export class InsertionSort {
 		}
 	}
 
-	private execute() {
+	execute() {
 		this.sort();
-	}
-
-	getOperations() {
-		return this.operations;
 	}
 }

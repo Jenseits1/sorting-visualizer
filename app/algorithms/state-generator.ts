@@ -24,28 +24,39 @@ export class StateGenerator {
 		this.operations = new Operations();
 	}
 
-	private processOperations() {
-		const numbers = this.numbers.map(({ number }) => number);
-
+	private chooseAlgorithm() {
 		switch (this.algorithm) {
 			case "merge-sort":
-				return new MergeSort(numbers, this.operations);
+				return MergeSort;
 			case "quick-sort":
-				return new QuickSort(numbers, this.operations);
+				return QuickSort;
 			case "insertion-sort":
-				return new InsertionSort(numbers, this.operations);
+				return InsertionSort;
 			default:
 				return;
 		}
 	}
 
+	private getOperations() {
+		const numbers = this.numbers.map(({ number }) => number);
+		const algorithm = this.chooseAlgorithm();
+
+		if (!algorithm) {
+			return [];
+		}
+
+		new algorithm(numbers, this.operations).execute();
+
+		return this.operations.getOperations();
+	}
+
 	public generateStates() {
-		this.processOperations();
+		const operations = this.getOperations();
 
 		const numbers = [...this.numbers];
 		const states: SortArrayState[] = [];
 
-		for (let operation of this.operations.getOperations()) {
+		for (let operation of operations) {
 			if (operation.type == "access") {
 				numbers[operation.index].number = operation.number;
 			}
@@ -63,7 +74,7 @@ export class StateGenerator {
 
 			states.push({ type: operation.type, numbers: newNumbers });
 		}
-
+		console.log(states.length);
 		return states;
 	}
 }
