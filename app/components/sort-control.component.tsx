@@ -14,7 +14,7 @@ export const SortControlComponent: FunctionComponent<
 	const handleStart = useSortStore((state) => state.handleStart);
 	const handleReset = useSortStore((state) => state.handleReset);
 	const handleStop = useSortStore((state) => state.handleStop);
-	const disabled = useSortStore((state) => state.started);
+	const started = useSortStore((state) => state.started);
 
 	return (
 		<>
@@ -22,7 +22,7 @@ export const SortControlComponent: FunctionComponent<
 				<SelectAlgorithmComponent />
 
 				<Button
-					disabled={disabled}
+					disabled={started}
 					variant="subtle"
 					onClick={handleReset}
 				>
@@ -32,24 +32,22 @@ export const SortControlComponent: FunctionComponent<
 					</Text>
 				</Button>
 
-				<Button
-					disabled={disabled}
-					variant="subtle"
-					onClick={handleStart}
-				>
-					<RiPlayFill />
+				{started ? (
+					<Button variant="subtle" onClick={handleStop}>
+						<RiStopFill />
+						<Text display={{ base: "none", md: "inline" }}>
+							Stop
+						</Text>
+					</Button>
+				) : (
+					<Button variant="subtle" onClick={handleStart}>
+						<RiPlayFill />
 
-					<Text display={{ base: "none", md: "inline" }}>Start</Text>
-				</Button>
-
-				<Button
-					disabled={!disabled}
-					variant="subtle"
-					onClick={handleStop}
-				>
-					<RiStopFill />
-					<Text display={{ base: "none", md: "inline" }}>Stop</Text>
-				</Button>
+						<Text display={{ base: "none", md: "inline" }}>
+							Start
+						</Text>
+					</Button>
+				)}
 
 				<SizeComponent />
 
