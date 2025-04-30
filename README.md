@@ -1,17 +1,17 @@
-# Sort no Jutsu ⚡️ - Sorting Visualizer App 📊
+# Sort No Jutsu 🧙‍♂️ - Sorting Algorithm Visualizer
 
-Sort no Jutsu is a powerful and interactive sorting visualizer app that allows you to explore various sorting algorithms and see them in action! With real-time control and optimized animation, it provides an engaging way to understand how algorithms sort data. Whether you're a beginner or an advanced learner, this tool is perfect for visualizing the inner workings of sorting algorithms like Merge Sort, Quick Sort, and more. 💡
+Sort No Jutsu is an interactive sorting algorithm visualizer built to help you visualize how different sorting algorithms work. Tt provides a seamless, engaging experience for users to learn and understand sorting algorithms through live visualization.
 
 ## ✨ Features ✨
 
 - **Multiple Sorting Algorithms 🧠:**
-    - Visualize popular sorting algorithms: **Merge Sort**, **Quick Sort**, **Selection Sort**, and more!
+    - Visualize popular sorting algorithms: **Merge Sort**, **Quick Sort**, and more!
 - **Real-time Speed Control ⚡️:**
     - Adjust the speed of the algorithm visualization in real-time to better understand each step.
 - **Dynamic Array Size Control 📏:**
     - Choose the size of the array to sort, from small to large datasets, for more accurate visualizations.
 - **Start/Stop Controls ⏸️:**
-    - Pause and resume the visualization at any time to examine specific steps or slow down the process for a deeper understanding.
+    - Starn and stop the visualization at any time to examine specific steps or slow down the process for a deeper understanding.
 - **Randomized Array Generation 🔀:**
     - Generate a new randomized array with the click of a button to see the algorithm work on different datasets.
 - **Optimized Canvas Animation 🖼️:**
@@ -21,16 +21,18 @@ Sort no Jutsu is a powerful and interactive sorting visualizer app that allows y
 
 ## 🛠️ Technologies Used 🛠️
 
-- **HTML5 Canvas 🎨:** For rendering high-performance animations of sorting algorithms.
-- **JavaScript 📝:** Core language used to implement sorting algorithms and animation controls.
-- **CSS3 🌈:** For creating a clean and responsive UI with smooth transitions and controls.
-- **Web APIs 🔌:** For handling user interactions and real-time updates of the sorting visualization.
+- **Next.js ⚛️:** React framework for server-side rendering and static site generation.
+- **TypeScript 📜:** Static type checker for enhanced code quality and maintainability.
+- **Chakra UI 🎨:** Component library for building accessible and responsive user interfaces.
+- **Zustand 🧠:** A state management library used to manage the sorting algorithm’s state and interactions.
+- **HTML5 Canvas 🖼️:** Provides the base for rendering sorting visualizations smoothly and efficiently.
 
 ## 🚀 Getting Started 🚀
 
 ### 📋 Prerequisites 📋
 
-- A modern web browser (Chrome, Firefox, Safari, etc.) 🌐
+- Node.js (>= 16.0.0) 📦
+- npm or yarn 🧶
 
 ### ⬇️ Installation ⬇️
 
@@ -41,84 +43,62 @@ Sort no Jutsu is a powerful and interactive sorting visualizer app that allows y
     cd <repository_name>
     ```
 
-2. Open the `index.html` file in your browser.
+2. Install dependencies:
+
+    ```bash
+    npm install # or yarn install
+    ```
 
 ### 🏃 Running the Application 🏃
 
-1. Open the project folder and open the `index.html` file in your browser.
-2. Enjoy exploring different sorting algorithms with real-time speed control, randomized arrays, and optimized visualizations!
+1. Start the development server:
 
-## 📝 Code Example 📝
+    ```bash
+    npm run dev # or yarn dev
+    ```
 
-Here’s a basic structure of the sorting algorithm:
+2. Open your browser and navigate to `http://localhost:3000`. 🌐
 
-```javascript
-import { Operations } from "./operations";
+### 📦 Building for Production 📦
 
-export class MergeSort {
-	private numbers: number[];
-	private temporary: number[];
-	private operations: Operations;
+1. Build the application:
 
-	constructor(numbers: number[], operations: Operations) {
-		this.numbers = numbers;
-		this.temporary = [];
-		this.operations = operations;
-	}
+    ```bash
+    npm run build # or yarn build
+    ```
 
-	private merge(left: number, mid: number, right: number) {
-		let i = left;
-		let j = mid + 1;
+2. Start the production server:
 
-		while (i <= mid && j <= right) {
-			this.operations.createComparisonOperation(i, j);
+    ```bash
+    npm run start # or yarn start
+    ```
 
-			if (this.numbers[i] < this.numbers[j]) {
-				this.temporary.push(this.numbers[i]);
-				i++;
-			} else {
-				this.temporary.push(this.numbers[j]);
-				j++;
-			}
-		}
+## 📝 Example Usage 📝
 
-		while (i <= mid) {
-			this.operations.createComparisonOperation(i, i);
-			this.temporary.push(this.numbers[i]);
-			i++;
-		}
+Upon running the app, you'll see a canvas where sorting algorithms are visually represented as they work through an array of numbers. You can interact with the visualization using the following options:
 
-		while (j <= right) {
-			this.operations.createComparisonOperation(j, j);
-			this.temporary.push(this.numbers[j]);
-			j++;
-		}
+- **Select Algorithm:** Choose from various sorting algorithms like Quick Sort, Merge Sort, etc.
+- **Adjust Speed:** Control the speed of the visualization to slow down or speed up the sorting process.
+- **Customize Array Size:** Change the array size to see how different sizes impact the algorithm’s performance.
 
-		let curr = right;
+## 🤝 Contributing 🤝
 
-		while (this.temporary.length > 0) {
-			const number = this.temporary.pop()!;
-			this.numbers[curr] = number;
-			this.operations.createAccessOperation(curr, number);
-			curr--;
-		}
-	}
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-	private sort(left: number, right: number) {
-		if (left == right) {
-			return;
-		}
+Here’s how you can contribute:
 
-		const mid = Math.floor((left + right) / 2);
+1. **Fork the Project**
+2. **Create your Feature Branch** (`git checkout -b feature/AmazingFeature`)
+3. **Commit your Changes** (`git commit -m 'Add some AmazingFeature'`)
+4. **Push to the Branch** (`git push origin feature/AmazingFeature`)
+5. **Open a Pull Request**
 
-		this.sort(left, mid);
-		this.sort(mid + 1, right);
+We encourage you to create issues for bugs, feature requests, or general questions.
 
-		this.merge(left, mid, right);
-	}
+## 📄 License 📄
 
-	execute() {
-		this.sort(0, this.numbers.length - 1);
-	}
-}
-```
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+🔗 Check out the [Live Demo](http://sortnojutsu.example.com) (Replace with your live URL) to see the magic in action! ✨
