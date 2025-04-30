@@ -95,8 +95,5 @@ Here’s how you can contribute:
 
 We encourage you to create issues for bugs, feature requests, or general questions.
 
-## 📄 License 📄
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 
