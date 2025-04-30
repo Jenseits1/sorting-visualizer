@@ -11,7 +11,7 @@ Sort No Jutsu is an interactive sorting algorithm visualizer built to help you v
 - **Dynamic Array Size Control 📏:**
     - Choose the size of the array to sort, from small to large datasets, for more accurate visualizations.
 - **Start/Stop Controls ⏸️:**
-    - Starn and stop the visualization at any time to examine specific steps or slow down the process for a deeper understanding.
+    - Start and stop the visualization at any time to examine specific steps or slow down the process for a deeper understanding.
 - **Randomized Array Generation 🔀:**
     - Generate a new randomized array with the click of a button to see the algorithm work on different datasets.
 - **Optimized Canvas Animation 🖼️:**
