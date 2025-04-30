@@ -1,6 +1,6 @@
-# Sort No Jutsu 🧙‍♂️ - Sorting Algorithm Visualizer
+# Sort no Jutsu 🧙‍♂️ - Sorting Algorithm Visualizer
 
-Sort No Jutsu is an interactive sorting algorithm visualizer built to help you visualize how different sorting algorithms work. It provides a seamless, engaging experience for users to learn and understand sorting algorithms through live visualization.
+Sort no Jutsu is an interactive sorting algorithm visualizer built to help you visualize how different sorting algorithms work. It provides a seamless, engaging experience for users to learn and understand sorting algorithms through live visualization.
 
 ## ✨ Features ✨
 
