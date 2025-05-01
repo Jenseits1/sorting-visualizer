@@ -4,6 +4,11 @@ import { useSortStore } from "../store/sort.store";
 
 interface SizeComponentProps {}
 
+const marks = [
+	{ value: 10, label: "10" },
+	{ value: 400, label: "400" },
+];
+
 export const SizeComponent: FunctionComponent<SizeComponentProps> = () => {
 	const size = useSortStore((state) => state.size);
 	const setSize = useSortStore((state) => state.setSize);
@@ -17,7 +22,7 @@ export const SizeComponent: FunctionComponent<SizeComponentProps> = () => {
 	return (
 		<Slider.Root
 			value={size}
-			w="80px"
+			w="120px"
 			min={10}
 			max={400}
 			disabled={disabled}
@@ -28,7 +33,10 @@ export const SizeComponent: FunctionComponent<SizeComponentProps> = () => {
 				<Slider.Track>
 					<Slider.Range />
 				</Slider.Track>
+
 				<Slider.Thumbs />
+
+				<Slider.Marks marks={marks} />
 			</Slider.Control>
 		</Slider.Root>
 	);

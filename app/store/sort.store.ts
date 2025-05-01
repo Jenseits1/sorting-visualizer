@@ -32,7 +32,7 @@ export const useSortStore = create<SortState>((set, get) => {
 		algorithm: ["merge-sort"],
 		setAlgorithm: (algorithm) => set({ algorithm }),
 
-		delay: [50],
+		delay: [500],
 		setDelay: (delay) => set({ delay }),
 
 		numbers: [],
