@@ -6,7 +6,7 @@ interface SizeComponentProps {}
 
 const marks = [
 	{ value: 10, label: "10" },
-	{ value: 400, label: "400" },
+	{ value: 300, label: "300" },
 ];
 
 export const SizeComponent: FunctionComponent<SizeComponentProps> = () => {
@@ -24,7 +24,7 @@ export const SizeComponent: FunctionComponent<SizeComponentProps> = () => {
 			value={size}
 			w="120px"
 			min={10}
-			max={400}
+			max={300}
 			disabled={disabled}
 			onValueChange={(e) => setSize(e.value)}
 		>

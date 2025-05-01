@@ -41,7 +41,7 @@ export const BarsCanvasComponent: FunctionComponent<
 		let y = 0;
 
 		for (const { number, color } of numbers) {
-			const height = number;
+			const height = number * 600;
 
 			ctx.fillStyle = color;
 			ctx.fillRect(x, y, barWidth, height);

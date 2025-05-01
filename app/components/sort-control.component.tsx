@@ -16,6 +16,8 @@ export const SortControlComponent: FunctionComponent<
 	const handleStop = useSortStore((state) => state.handleStop);
 	const started = useSortStore((state) => state.started);
 
+	console.log("hi");
+
 	return (
 		<>
 			<Box display="flex" alignItems="end" spaceX="4" marginBottom="4">
