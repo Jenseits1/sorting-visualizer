@@ -5,7 +5,7 @@ import { useSortStore } from "../store/sort.store";
 interface DelayComponentProps {}
 
 const marks = [
-	{ value: 5, label: "5ms" },
+	{ value: 10, label: "10ms" },
 
 	{ value: 500, label: "500ms" },
 ];
@@ -17,7 +17,7 @@ export const DelayComponent: FunctionComponent<DelayComponentProps> = () => {
 	return (
 		<Slider.Root
 			w="120px"
-			min={5}
+			min={10}
 			max={500}
 			value={delay}
 			onValueChange={(e) => setDelay(e.value)}

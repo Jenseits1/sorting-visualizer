@@ -16,8 +16,6 @@ export const SortControlComponent: FunctionComponent<
 	const handleStop = useSortStore((state) => state.handleStop);
 	const started = useSortStore((state) => state.started);
 
-	console.log("hi");
-
 	return (
 		<>
 			<Box display="flex" alignItems="end" spaceX="4" marginBottom="4">
@@ -34,22 +32,26 @@ export const SortControlComponent: FunctionComponent<
 					</Text>
 				</Button>
 
-				{started ? (
-					<Button variant="subtle" onClick={handleStop}>
-						<RiStopFill />
-						<Text display={{ base: "none", md: "inline" }}>
-							Stop
-						</Text>
-					</Button>
-				) : (
-					<Button variant="subtle" onClick={handleStart}>
-						<RiPlayFill />
-
-						<Text display={{ base: "none", md: "inline" }}>
-							Start
-						</Text>
-					</Button>
-				)}
+				<Button
+					variant="subtle"
+					onClick={started ? handleStop : handleStart}
+				>
+					{started ? (
+						<>
+							<RiStopFill />
+							<Text display={{ base: "none", md: "inline" }}>
+								Stop
+							</Text>
+						</>
+					) : (
+						<>
+							<RiPlayFill />
+							<Text display={{ base: "none", md: "inline" }}>
+								Start
+							</Text>
+						</>
+					)}
+				</Button>
 
 				<SizeComponent />
 

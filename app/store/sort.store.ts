@@ -19,6 +19,8 @@ interface SortState {
 	maxProgress: number;
 
 	started: boolean;
+	muted: boolean;
+	setMuted: (muted: boolean) => void;
 
 	handleStart: () => Promise<void>;
 	handleStop: () => void;
@@ -43,6 +45,8 @@ export const useSortStore = create<SortState>((set, get) => {
 		maxProgress: 0,
 
 		started: false,
+		muted: false,
+		setMuted: (muted) => set({ muted }),
 
 		handleReset: () => {
 			const size = get().size[0];
@@ -73,18 +77,19 @@ export const useSortStore = create<SortState>((set, get) => {
 
 			for (const { type, frequency, numbers } of states) {
 				if (!get().started) break;
+
 				set({ numbers });
 
-				if (type == "comparison") playAnimationSound(frequency);
+				if (type == "comparison" && !get().muted) {
+					playAnimationSound(frequency);
+				}
 
 				const progress = get().progress + 1;
 				set({ progress });
 
-				const delay = get().delay[0];
+				const ms = get().delay[0];
 
-				await new Promise((resolve) => setTimeout(resolve, delay));
-
-				if (!get().started) break;
+				await new Promise((resolve) => setTimeout(resolve, ms));
 			}
 
 			get().handleStop();
