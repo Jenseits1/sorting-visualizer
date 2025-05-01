@@ -5,19 +5,22 @@ Sort no Jutsu is an interactive sorting algorithm visualizer built to help you v
 ## ✨ Features ✨
 
 - **Multiple Sorting Algorithms 🧠:**
-    - Visualize popular sorting algorithms: **Merge Sort**, **Quick Sort**, and more!
+  - Visualize popular sorting algorithms: **Merge Sort**, **Quick Sort**, and more!
 - **Real-time Speed Control ⚡️:**
-    - Adjust the speed of the algorithm visualization in real-time to better understand each step.
+  - Adjust the speed of the algorithm visualization in real-time to better understand each step.
 - **Dynamic Array Size Control 📏:**
-    - Choose the size of the array to sort, from small to large datasets, for more accurate visualizations.
+  - Choose the size of the array to sort, from small to large datasets, for more accurate visualizations.
 - **Start/Stop Controls ⏸️:**
-    - Start and stop the visualization at any time to examine specific steps or slow down the process for a deeper understanding.
+  - Start and stop the visualization at any time to examine specific steps or slow down the process for a deeper understanding.
 - **Randomized Array Generation 🔀:**
-    - Generate a new randomized array to see the algorithm work on different datasets.
+  - Generate a new randomized array to see the algorithm work on different datasets.
 - **Optimized Canvas Animation 🖼️:**
-    - The visualization is highly optimized, delivering smooth animations and ensuring up to 200+ frames per second.
+  - The visualization is highly optimized, delivering smooth animations and ensuring up to 100+ frames per second.
 - **Progress Bar 📊:**
-    - A progress bar displays the current progress of the algorithm, helping you track how far along the sorting process is.
+  - A progress bar displays the current progress of the algorithm, helping you track how far along the sorting process is.
+- **Interactive Sound Effects 🎶:**
+  - Hear real-time sound effects based on the frequency of numbers being compared during sorting, providing an additional sensory dimension.
+  - Easily **mute or unmute** the sound effects with a dedicated button to suit your preference.
 
 ## 🛠️ Technologies Used 🛠️
 
