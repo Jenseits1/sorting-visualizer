@@ -76,14 +76,6 @@ Sort no Jutsu is an interactive sorting algorithm visualizer built to help you v
     npm run start # or yarn start
     ```
 
-## 📝 Example Usage 📝
-
-Upon running the app, you'll see a canvas where sorting algorithms are visually represented as they work through an array of numbers. You can interact with the visualization using the following options:
-
-- **Select Algorithm:** Choose from various sorting algorithms like Quick Sort, Merge Sort, etc.
-- **Adjust Speed:** Control the speed of the visualization to slow down or speed up the sorting process.
-- **Customize Array Size:** Change the array size to see how different sizes impact the algorithm’s performance.
-
 ## 🤝 Contributing 🤝
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
