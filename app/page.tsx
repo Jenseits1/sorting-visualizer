@@ -1,5 +1,5 @@
 "use client";
-import { Container } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 
 import { SortControlComponent } from "./components/sort-control.component";
 
@@ -10,14 +10,21 @@ import { FooterComponent } from "./components/footer.component";
 
 export default function Home() {
 	return (
-		<Container spaceY="4" paddingY="8">
-			<NavbarComponent />
+		<Container
+			display="flex"
+			flexDirection="column"
+			justifyContent="space-between"
+			h="svh"
+		>
+			<Box spaceY="4" paddingY="8">
+				<NavbarComponent />
 
-			<SortControlComponent />
+				<SortControlComponent />
 
-			<ProgressBarComponent />
+				<ProgressBarComponent />
 
-			<BarsCanvasComponent />
+				<BarsCanvasComponent />
+			</Box>
 
 			<FooterComponent />
 		</Container>

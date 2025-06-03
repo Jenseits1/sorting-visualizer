@@ -41,8 +41,33 @@ export const ProgressBarComponent: FunctionComponent<
 	};
 
 	useEffect(() => {
+		const renderCanvas = () => {
+			const width = boxRef.current?.offsetWidth!;
+			const height = boxRef.current?.offsetHeight!;
+
+			const x = 0;
+			const y = 0;
+
+			const canvas = canvasRef.current;
+
+			if (!canvas) {
+				return;
+			}
+
+			canvas.width = width;
+			canvas.height = height;
+			canvas.style.backgroundColor = "#18181b";
+
+			const ctx = canvas.getContext("2d")!;
+
+			const currentProgress = (progress / maxProgress) * width;
+
+			ctx.fillStyle = "#B22222";
+			ctx?.fillRect(x, y, currentProgress, height);
+		};
+
 		renderCanvas();
-	}, [progress, renderCanvas]);
+	}, [progress]);
 
 	return (
 		<Box height="1" ref={boxRef}>
