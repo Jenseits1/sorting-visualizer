@@ -6,7 +6,7 @@ import { QuickSort } from "./quick-sort";
 import { SelectionSort } from "./selection-sort";
 
 export type SortArrayState = {
-	type: "comparison" | "access" | null;
+	type: "comparison" | "access";
 	frequency: number;
 	numbers: SortableNumber[];
 };
