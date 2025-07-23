@@ -26,7 +26,7 @@ export const NavbarComponent: FunctionComponent<NavbarComponentProps> = () => {
 					variant="ghost"
 					onClick={() =>
 						window.open(
-							"https://jenseits1.github.io/sort-no-jutsu/",
+							"https://github.com/Jenseits1/sort-no-jutsu",
 							"_blank"
 						)
 					}
