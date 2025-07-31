@@ -7,7 +7,7 @@ interface LogoComponentProps {}
 export const LogoComponent: FunctionComponent<LogoComponentProps> = () => {
 	return (
 		<Box display="flex" alignItems="center">
-			<Icon size="2xl" color="red.solid">
+			<Icon size="xl" color="red.solid">
 				<HiChartBar />
 			</Icon>
 
