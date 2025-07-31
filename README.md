@@ -1,32 +1,32 @@
 # Sorting Visualizer
 
-Sorting Visualizer is an interactive sorting algorithm visualizer built to help users understand how different sorting algorithms work. It offers a smooth and engaging experience to explore sorting through live visual feedback.
+Sorting Visualizer is an interactive sorting algorithm visualizer built to help users understand how different sorting algorithms work
 
 ## Features
 
 -   **Multiple Sorting Algorithms**  
-    Visualize popular sorting algorithms such as Merge Sort, Quick Sort, and others.
+    Visualize popular sorting algorithms such as Merge Sort, Quick Sort, and others
 
 -   **Real-time Speed Control**  
-    Adjust the speed of the visualization on the fly to observe each step more clearly.
+    Adjust the speed of the visualization on the fly to observe each step more clearly
 
 -   **Dynamic Array Size Control**  
-    Choose different array sizes to see how sorting algorithms handle varying data sets.
+    Choose different array sizes to see how sorting algorithms handle varying data sets
 
 -   **Start/Stop Controls**  
-    Pause and resume the visualization to examine specific operations and transitions.
+    Pause and resume the visualization to examine specific operations and transitions
 
 -   **Randomized Array Generation**  
-    Generate new random arrays to test how algorithms perform on different inputs.
+    Generate new random arrays to test how algorithms perform on different inputs
 
 -   **Optimized Canvas Animation**  
-    Smooth, high-performance animations running at up to 100+ frames per second using HTML5 Canvas.
+    Smooth, high-performance animations running at up to 100+ frames per second using HTML5 Canvas
 
 -   **Progress Bar**  
-    Track the algorithm’s progress through a visual indicator of sorting completion.
+    Track the algorithm’s progress through a visual indicator of sorting completion
 
 -   **Interactive Sound Effects**  
-    Real-time sound feedback based on the frequency of elements being compared, with the ability to toggle sound on or off.
+    Real-time sound feedback based on the frequency of elements being compared, with the ability to toggle sound on or off
 
 ## Technologies Used
 
