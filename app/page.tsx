@@ -1,5 +1,5 @@
 "use client";
-import { Box, Container } from "@chakra-ui/react";
+import { Container, Theme } from "@chakra-ui/react";
 
 import { SortControlComponent } from "./components/sort-control.component";
 

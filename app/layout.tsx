@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Provider } from "@/components/ui/provider";
 
 export const metadata: Metadata = {
-	title: "Sort no Jutsu",
+	title: "Sorting Visualizer",
 	description: "Sorting Visualizer app",
 	icons: {
-		icon: "mangekyou.svg",
+		icon: "bar-chart.svg",
 	},
 };
 

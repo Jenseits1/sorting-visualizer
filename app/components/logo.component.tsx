@@ -8,7 +8,7 @@ export const LogoComponent: FunctionComponent<LogoComponentProps> = () => {
 	return (
 		<Box display="flex" alignItems="center">
 			<Icon size="xl" color="red.solid">
-				<HiChartBar />
+				<Image src="./bar-chart.svg" alt="bar-chart" />
 			</Icon>
 
 			<Text
