@@ -1,13 +1,14 @@
 import { Box, Icon, Image, Text } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+import { HiChartBar } from "react-icons/hi";
 
 interface LogoComponentProps {}
 
 export const LogoComponent: FunctionComponent<LogoComponentProps> = () => {
 	return (
 		<Box display="flex" alignItems="center">
-			<Icon size="xl" color="red.solid">
-				<Image src="./mangekyou.svg" alt="mangekyou" />
+			<Icon size="2xl" color="red.solid">
+				<HiChartBar />
 			</Icon>
 
 			<Text
@@ -16,7 +17,7 @@ export const LogoComponent: FunctionComponent<LogoComponentProps> = () => {
 				marginLeft={2}
 				fontWeight="bold"
 			>
-				Sort no Jutsu
+				Sorting Visualizer
 			</Text>
 		</Box>
 	);
