@@ -7,7 +7,6 @@ import { SelectionSort } from "./selection-sort";
 
 export type SortArrayState = {
 	type: "comparison" | "access";
-	frequency: number;
 	numbers: SortableNumber[];
 };
 
@@ -68,8 +67,6 @@ export class StateGenerator {
 		for (const operation of operations) {
 			if (operation.type == "access") {
 				numbers[operation.index].number = operation.number;
-
-				frequency = operation.number;
 			}
 
 			const newNumbers: SortableNumber[] = numbers.map(
@@ -81,15 +78,10 @@ export class StateGenerator {
 			if (operation.type == "comparison") {
 				newNumbers[operation.leftIndex].color = "white";
 				newNumbers[operation.rightIndex].color = "white";
-				frequency =
-					(newNumbers[operation.leftIndex].number +
-						newNumbers[operation.rightIndex].number) /
-					2;
 			}
 
 			states.push({
 				type: operation.type,
-				frequency,
 				numbers: newNumbers,
 			});
 		}

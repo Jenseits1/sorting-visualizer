@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { SortableNumber, StateGenerator } from "../algorithms/state-generator";
-import { playAnimationSound } from "../utils/play-animation-sound";
 
 interface SortState {
 	delay: number[];
@@ -19,8 +18,6 @@ interface SortState {
 	maxProgress: number;
 
 	started: boolean;
-	muted: boolean;
-	setMuted: (muted: boolean) => void;
 
 	handleStart: () => Promise<void>;
 	handleStop: () => void;
@@ -45,8 +42,6 @@ export const useSortStore = create<SortState>((set, get) => {
 		maxProgress: 0,
 
 		started: false,
-		muted: false,
-		setMuted: (muted) => set({ muted }),
 
 		handleReset: () => {
 			const size = get().size[0];
@@ -75,14 +70,10 @@ export const useSortStore = create<SortState>((set, get) => {
 			set({ progress: 0 });
 			set({ maxProgress: states.length });
 
-			for (const { type, frequency, numbers } of states) {
+			for (const { numbers } of states) {
 				if (!get().started) break;
 
 				set({ numbers });
-
-				if (type == "comparison" && !get().muted) {
-					playAnimationSound(frequency);
-				}
 
 				const progress = get().progress + 1;
 				set({ progress });

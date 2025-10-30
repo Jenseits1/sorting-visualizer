@@ -25,9 +25,6 @@ Sorting Visualizer is an interactive sorting algorithm visualizer built to help 
 -   **Progress Bar**  
     Track the algorithm’s progress through a visual indicator of sorting completion
 
--   **Interactive Sound Effects**  
-    Real-time sound feedback based on the frequency of elements being compared, with the ability to toggle sound on or off
-
 ## Technologies Used
 
 -   **Next.js** — React framework for server-side rendering and static site generation
