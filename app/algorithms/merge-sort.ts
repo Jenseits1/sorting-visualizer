@@ -39,13 +39,15 @@ export class MergeSort {
 			j++;
 		}
 
-		let curr = right;
+		let index = right;
 
 		while (this.temporary.length > 0) {
-			const number = this.temporary.pop()!;
-			this.numbers[curr] = number;
-			this.operations.createAccessOperation(curr, number);
-			curr--;
+			const value = this.temporary.pop()!;
+
+			this.numbers[index] = value;
+
+			this.operations.createWriteOperation(index, value);
+			index--;
 		}
 	}
 

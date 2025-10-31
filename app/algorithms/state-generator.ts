@@ -5,22 +5,17 @@ import { Operations } from "./operations";
 import { QuickSort } from "./quick-sort";
 import { SelectionSort } from "./selection-sort";
 
-export type SortArrayState = {
-	type: "comparison" | "access";
-	numbers: SortableNumber[];
-};
-
-export type SortableNumber = {
+export type StateNumber = {
 	number: number;
 	color: string;
 };
 
 export class StateGenerator {
-	private numbers: SortableNumber[];
+	private numbers: StateNumber[];
 	private algorithm: string;
 	private operations: Operations;
 
-	constructor(numbers: SortableNumber[], algorithm: string[]) {
+	constructor(numbers: StateNumber[], algorithm: string[]) {
 		this.numbers = [...numbers];
 		this.algorithm = algorithm[0];
 		this.operations = new Operations();
@@ -60,28 +55,32 @@ export class StateGenerator {
 		const operations = this.getOperations();
 
 		const numbers = [...this.numbers];
-		const states: SortArrayState[] = [];
+		const states: StateNumber[][] = [];
 
 		for (const operation of operations) {
-			if (operation.type == "access") {
-				numbers[operation.index].number = operation.number;
+			if (operation.type == "swap") {
+				[numbers[operation.left], numbers[operation.right]] = [
+					numbers[operation.right],
+					numbers[operation.left],
+				];
 			}
 
-			const newNumbers: SortableNumber[] = numbers.map(
+			if (operation.type == "write") {
+				numbers[operation.index].number = operation.value;
+			}
+
+			const newNumbers: StateNumber[] = numbers.map(
 				({ number, color }) => {
 					return { number, color };
 				}
 			);
 
 			if (operation.type == "comparison") {
-				newNumbers[operation.leftIndex].color = "white";
-				newNumbers[operation.rightIndex].color = "white";
+				newNumbers[operation.left].color = "white";
+				newNumbers[operation.right].color = "white";
 			}
 
-			states.push({
-				type: operation.type,
-				numbers: newNumbers,
-			});
+			states.push(newNumbers);
 		}
 
 		return states;

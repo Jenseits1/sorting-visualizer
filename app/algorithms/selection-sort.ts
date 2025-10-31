@@ -10,8 +10,8 @@ export class SelectionSort {
 	}
 
 	private swapElements(i: number, j: number) {
-		this.operations.createAccessOperation(i, this.numbers[j]);
-		this.operations.createAccessOperation(j, this.numbers[i]);
+		this.operations.createSwapOperation(i, j);
+
 		[this.numbers[i], this.numbers[j]] = [this.numbers[j], this.numbers[i]];
 	}
 

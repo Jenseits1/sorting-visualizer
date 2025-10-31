@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { SortableNumber, StateGenerator } from "../algorithms/state-generator";
+import { StateGenerator, StateNumber } from "../algorithms/state-generator";
 
 interface SortState {
 	delay: number[];
@@ -11,8 +11,8 @@ interface SortState {
 	algorithm?: string[];
 	setAlgorithm: (algorithm: string[]) => void;
 
-	numbers: SortableNumber[];
-	setNumbers: (numbers: SortableNumber[]) => void;
+	numbers: StateNumber[];
+	setNumbers: (numbers: StateNumber[]) => void;
 
 	progress: number;
 	maxProgress: number;
@@ -46,13 +46,10 @@ export const useSortStore = create<SortState>((set, get) => {
 		handleReset: () => {
 			const size = get().size[0];
 
-			const numbers: SortableNumber[] = Array.from(
-				{ length: size },
-				() => ({
-					number: Math.random(),
-					color: "#B22222",
-				})
-			);
+			const numbers: StateNumber[] = Array.from({ length: size }, () => ({
+				number: Math.random(),
+				color: "#B22222",
+			}));
 
 			set({ numbers });
 		},
@@ -70,10 +67,10 @@ export const useSortStore = create<SortState>((set, get) => {
 			set({ progress: 0 });
 			set({ maxProgress: states.length });
 
-			for (const { numbers } of states) {
+			for (const state of states) {
 				if (!get().started) break;
 
-				set({ numbers });
+				set({ numbers: state });
 
 				const progress = get().progress + 1;
 				set({ progress });
@@ -89,11 +86,9 @@ export const useSortStore = create<SortState>((set, get) => {
 		handleStop: () => {
 			set({ started: false });
 
-			const numbers: SortableNumber[] = get().numbers.map(
-				({ number }) => {
-					return { number, color: "#B22222" };
-				}
-			)!;
+			const numbers: StateNumber[] = get().numbers.map(({ number }) => {
+				return { number, color: "#B22222" };
+			})!;
 
 			set({ numbers });
 		},
