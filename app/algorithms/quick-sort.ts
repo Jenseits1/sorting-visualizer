@@ -17,7 +17,7 @@ export class QuickSort {
 	}
 
 	private swapElements(i: number, j: number) {
-		this.operations.createComparisonOperation(i, j);
+		this.operations.createSwapOperation(i, j);
 
 		[this.numbers[i], this.numbers[j]] = [this.numbers[j], this.numbers[i]];
 	}
